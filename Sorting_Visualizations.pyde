@@ -1,15 +1,12 @@
 w, h = 1050, 750
 
-element_count = 70
+element_count = 30
 stages = []
 
 # Colors for the gradient 
 colors = [(250, 20, 20), (0, 225, 225), (0, 0, 0)]
 
-# Visualizaiton Settings
-row_sep = float(h) / (element_count + 1)
-
-circle_size = 3
+circle_size = 5
 stroke_weight = 1
 
 # Returns the color between two colors at a specific step in the gradient
@@ -68,6 +65,7 @@ def visualize():
         colors.append((i * 255/element_count, 20, 60))
         
     column_sep = float(w) / (len(stages) + 1)
+    row_sep = float(h) / (element_count + 1)
     
     for e in range(element_count):
         c = get_gradient_point(colors[0], colors[1], e, element_count)
@@ -98,4 +96,5 @@ def setup():
     visualize()
     
     save_seed = str(int(random(10000)))
-    save(f'Examples/Bubble/{save_seed}')
+    print(save_seed)
+    save('Examples/Bubble/%s.png' % save_seed)
