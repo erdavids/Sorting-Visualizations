@@ -14,5 +14,5 @@ All of these projects are available with the intention that other people will en
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A6YGXL)
 
-## Bubble Sort / [Tutorial]()
-<p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Bubble/Favorites/6434.png"></p>
+## Bubble Sort / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
+<p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Bubble/Favorites/6781.png"></p>
