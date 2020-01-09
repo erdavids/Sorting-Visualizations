@@ -16,8 +16,8 @@ All of these projects are available with the intention that other people will en
 
 ## Bubble Sort / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
 <p align="center">
-  ![Bubble Sort](Examples/Bubble/Favourites/6781.png)
+  ![BubbleSort](Examples/Bubble/Favourites/6781.png)
 
 ## Bogo Sort
 <p align="center">
-  ![Bogo sort](Examples/Favorites/bogo-display.png)
+  ![BogoSort](Examples/Favorites/bogo-display.png)
