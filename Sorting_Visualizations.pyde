@@ -36,7 +36,6 @@ def shuffle(list_to_shuffle):
     len_v = len(v)
     for e in range(len_v, 0, -1):
         shuffled.append(list_to_shuffle.pop(int(random(e))))
-        len_v -= 1
     return shuffled
 
 
