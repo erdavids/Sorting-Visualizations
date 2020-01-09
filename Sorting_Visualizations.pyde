@@ -1,13 +1,13 @@
-w, h = 1050, 250
+w, h = 1000, 1000
 
-element_count = 8
+element_count = 40
 stages = []
 
 # Colors for the gradient 
 colors = [(250, 20, 20), (0, 225, 225), (0, 0, 0)]
 
 circle_size = 5
-stroke_weight = 1
+stroke_weight = 2
 
 # Returns the color between two colors at a specific step in the gradient
 def get_gradient_point(color_one, color_two, step, max_steps):
@@ -29,8 +29,7 @@ def get_gradient_point(color_one, color_two, step, max_steps):
 
 def shuffle(l):
     v = list(l)
-    
-    print(v)
+
     shuffled = []
     for e in range(element_count):
         shuffled.append(v.pop(int(random(len(v)))))
@@ -57,6 +56,27 @@ def bogo_sort(v):
             break
         
     return stages
+
+def insertion_sort(v):
+    stages.append(v)
+    
+    index = 1
+    while index < len(v):
+        next_stage = list(stages[-1])
+        mov = index
+        while (mov > 0 and next_stage[mov - 1] > next_stage[mov]):
+            t = next_stage[mov]
+            next_stage[mov] = next_stage[mov - 1]
+            next_stage[mov - 1] = t
+        
+            mov -= 1
+        
+        stages.append(next_stage)
+        index += 1
+    
+    
+    return stages
+
 def bubble_sort(v):
     stages.append(v)
     
@@ -113,10 +133,10 @@ def setup():
         v.append(e)
         
         
-    bogo_sort(shuffle(v))
+    print(insertion_sort(shuffle(v)))
     
     visualize()
     
     save_seed = str(int(random(10000)))
     print(save_seed)
-    save('Examples/Bogo/%s.png' % save_seed)
+    save('Examples/Insertion/%s.png' % save_seed)
