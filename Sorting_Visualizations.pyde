@@ -1,6 +1,6 @@
 w, h = 1050, 750
 
-element_count = 30
+element_count = 3
 stages = []
 
 # Colors for the gradient 
@@ -63,6 +63,40 @@ def sorted(l):
         if l[i] > l[i + 1]:
             return False
     return True
+
+def merge_sort(v):
+    
+    stages.append(v[:])
+    
+    if len(v) > 1:
+        mid = len(v)/2
+        L = v[:mid]
+        R = v[mid:]
+        
+        merge_sort(L)
+        merge_sort(R)
+        
+        i = j = k = 0
+        
+        while (i < len(L) and j < len(R)):
+            if L[i] < R[j]:
+                v[k] = L[i]
+                i += 1
+            else:
+                v[k] = R[j]
+                j += 1
+            k += 1
+        
+        while i < len(L):
+            v[k] = L[i]
+            i += 1
+            k += 1
+            
+        while j < len(R):
+            v[k] = R[j]
+            j += 1
+            k += 1
+
 
 def quick_sort(v, low, high):
     stages.append(v[:])
@@ -164,8 +198,7 @@ def setup():
         v.append(e)
         
         
-    quick_sort(shuffle(v), 0, element_count -1)
-    print(stages)
+    bogo_sort(shuffle(v))
     
     visualize()
 
