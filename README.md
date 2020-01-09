@@ -16,3 +16,6 @@ All of these projects are available with the intention that other people will en
 
 ## Bubble Sort / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Bubble/Favorites/6781.png"></p>
+
+## Bogo Sort
+<p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/bogo-display.png"></p>
