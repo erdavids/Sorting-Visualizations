@@ -1,13 +1,16 @@
 w, h = 1050, 750
 
-element_count = 3
+element_count = 8
 stages = []
 
 # Colors for the gradient 
 colors = [(250, 20, 20), (0, 225, 225), (0, 0, 0)]
 
 circle_size = 5
-stroke_weight = 2
+stroke_weight = 3
+
+# Repeats the unsorted / sorted stages
+connect_everything = True
 
 # Returns the color between two colors at a specific step in the gradient
 def get_gradient_point(color_one, color_two, step, max_steps):
@@ -64,6 +67,54 @@ def sorted(l):
             return False
     return True
 
+def gnome_sort(v):
+    stages.append(v[:])
+    index = 0
+    while index != len(v):
+        next_stage = stages[-1][:]
+        if (index == 0):
+            index += 1
+        elif (next_stage[index] < next_stage[index - 1]):
+            t = next_stage[index]
+            next_stage[index] = next_stage[index - 1]
+            next_stage[index - 1] = t
+            
+            index -= 1
+        else:
+            index += 1
+            
+        stages.append(next_stage)
+    
+            
+
+# Slightly Modified Counting Sort
+def counting_sort(v):
+    
+    count = [0] * (max(v) + 1)
+    
+    # Count occurrence of each value
+    for i in v:
+        count[i] += 1
+
+        
+    out = []
+    out_index = 0
+    
+    for i in range(len(count)):
+        for j in range(count[i]):
+            out.append(i)
+    
+    print(out)
+    
+def radix_sort(v):
+    m = max(v)
+    
+    exp = 1
+    while m/exp > 0:
+        print(counting_sort(v))
+        exp *= 10
+    
+
 def merge_sort(v):
     
     stages.append(v[:])
@@ -97,6 +148,7 @@ def merge_sort(v):
             j += 1
             k += 1
 
+    stages.append(v[:])
 
 def quick_sort(v, low, high):
     stages.append(v[:])
@@ -167,6 +219,11 @@ def visualize():
     for i in range(element_count):
         colors.append((i * 255/element_count, 20, 60))
         
+    if (connect_everything):
+        stages.insert(0, stages[0][:])
+        stages.append(stages[-1][:])
+    
+        
     column_sep = float(w) / (len(stages) + 1)
     row_sep = float(h) / (element_count + 1)
     
@@ -175,14 +232,15 @@ def visualize():
         stroke(c[0], c[1], c[2])
         beginShape()
         for s in range(len(stages)):
-            x = column_sep + s * column_sep
-            y = row_sep + stages[s].index(e) * row_sep
+            if (e in stages[s]):
+                x = column_sep + s * column_sep
+                y = row_sep + stages[s].index(e) * row_sep
+        
+                curveVertex(x, y)
+                
     
-            curveVertex(x, y)
-            
-
-            fill(c[0], c[1], c[2])
-            circle(x, y, circle_size)
+                fill(c[0], c[1], c[2])
+                circle(x, y, circle_size)
         
         noFill()
         endShape()
@@ -198,10 +256,10 @@ def setup():
         v.append(e)
         
         
-    bogo_sort(shuffle(v))
+    gnome_sort(shuffle(v))
     
     visualize()
 
     
     save_seed = str(int(random(10000)))
-    save('Examples/Quick/%s.png' % save_seed)
+    save('Examples/Gnome/%s.png' % save_seed)
