@@ -1,6 +1,6 @@
-w, h = 1000, 1000
+w, h = 1050, 750
 
-element_count = 40
+element_count = 30
 stages = []
 
 # Colors for the gradient 
@@ -36,11 +36,42 @@ def shuffle(l):
         
     return shuffled
 
+
+def partition(v, low, high):
+    pivot = v[high]
+    
+    index = low - 1
+    
+    for j in range(low, high):
+        if (v[j] < pivot):
+            index += 1
+            
+            t = v[index]
+            v[index] = v[j]
+            v[j] = t
+        
+    t = v[index + 1]
+    v[index + 1] = v[high]
+    v[high] = t
+    
+    return (index + 1)
+            
+
+
 def sorted(l):
     for i in range(len(l) - 1):
         if l[i] > l[i + 1]:
             return False
     return True
+
+def quick_sort(v, low, high):
+    stages.append(v[:])
+    
+    if (low < high):
+        pivot = partition(v, low, high)
+        
+        quick_sort(v, low, pivot - 1)
+        quick_sort(v, pivot + 1, high)
 
 def bogo_sort(v):
     stages.append(v)
@@ -133,10 +164,11 @@ def setup():
         v.append(e)
         
         
-    print(insertion_sort(shuffle(v)))
+    quick_sort(shuffle(v), 0, element_count -1)
+    print(stages)
     
     visualize()
+
     
     save_seed = str(int(random(10000)))
-    print(save_seed)
-    save('Examples/Insertion/%s.png' % save_seed)
+    save('Examples/Quick/%s.png' % save_seed)
