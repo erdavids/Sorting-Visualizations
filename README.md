@@ -15,7 +15,9 @@ All of these projects are available with the intention that other people will en
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A6YGXL)
 
 ## Bubble Sort / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
-<p align="center">![Bubble Sort](Examples/Bubble/Favourites/6781.png)
+<p align="center">
+  ![Bubble Sort](Examples/Bubble/Favourites/6781.png)
 
 ## Bogo Sort
-<p align="center">![Bogo sort](Examples/Favorites/bogo-display.png)
+<p align="center">
+  ![Bogo sort](Examples/Favorites/bogo-display.png)
