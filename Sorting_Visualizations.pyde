@@ -2,7 +2,7 @@ import javax.swing.JOptionPane as JOptionPane
 
 w, h = 1050, 750
 
-element_count = 8
+element_count = 15
 stages = []
 
 # Colors for the gradient 
@@ -155,8 +155,10 @@ def merge_sort(v):
 
     stages.append(v[:])
 
-def quick_sort(v, low, high):
+def quick_sort(v, low=0, high=None):
     stages.append(v[:])
+    if high==None:
+        high=len(v)-1
     
     if (low < high):
         pivot = partition(v, low, high)
@@ -260,7 +262,13 @@ def setup():
     for e in range(element_count):
         v.append(e)
         
-    opts={"Bogosort":bogo_sort,"Gnome Sort":gnome_sort,"Bubble Sort":bubble_sort,"Merge Sort":merge_sort,"Insertion Sort":insertion_sort,"Radix":radix_sort}
+    opts={"Bogosort":bogo_sort,
+          "Gnome Sort":gnome_sort,
+          "Bubble Sort":bubble_sort,
+          "Merge Sort":merge_sort,
+          "Insertion Sort":insertion_sort,
+          "Radix":radix_sort,
+          "Quicksort":quick_sort}
     opt=JOptionPane.showOptionDialog(
         None,
         "Choose a sorting algorithm",
