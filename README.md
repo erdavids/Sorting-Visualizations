@@ -1,4 +1,4 @@
-# Sorting Visualizations
+# Sorting Visualizations / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
 
 I'm working on simple visualizations of all the fundamental sorting algorithims.
 
@@ -14,7 +14,7 @@ All of these projects are available with the intention that other people will en
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A6YGXL)
 
-## Bubble Sort / [Tutorial](https://www.youtube.com/watch?v=YK2CziWXVYw)
+## Bubble Sort
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/bubble.png"></p>
 
 ## Insertion Sort
@@ -25,6 +25,9 @@ All of these projects are available with the intention that other people will en
 
 ## Merge Sort 
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/merge.png"></p>
+
+## Selection Sort 
+<p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/selection.png"></p>
 
 ## Bogo Sort
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/bogo.png"></p>
