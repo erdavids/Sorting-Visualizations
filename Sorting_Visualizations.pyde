@@ -1,6 +1,6 @@
 w, h = 1050, 750
 
-element_count = 8
+element_count = 11
 stages = []
 
 # Colors for the gradient 
@@ -105,6 +105,7 @@ def counting_sort(v):
             out.append(i)
     
     print(out)
+    
     
 def radix_sort(v):
     m = max(v)
