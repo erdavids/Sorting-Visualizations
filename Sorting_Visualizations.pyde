@@ -2,7 +2,7 @@ import javax.swing.JOptionPane as JOptionPane
 
 w, h = 1050, 750
 
-element_count = 15
+element_count = 11
 stages = []
 
 # Colors for the gradient 
@@ -110,6 +110,7 @@ def counting_sort(v,n):
     i = 0
     for i in range(0,l): 
         v[i] = out[i] 
+    
     
 def radix_sort(v):
     stages.append(v[:])
