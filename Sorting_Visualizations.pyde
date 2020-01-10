@@ -1,3 +1,5 @@
+import javax.swing.JOptionPane as JOptionPane
+
 w, h = 1050, 750
 
 element_count = 8
@@ -255,8 +257,17 @@ def setup():
     for e in range(element_count):
         v.append(e)
         
-        
-    gnome_sort(shuffle(v))
+    opts={"Bogosort":bogo_sort,"Gnome Sort":gnome_sort,"Bubble Sort":bubble_sort,"Merge Sort":merge_sort,"Insertion Sort":insertion_sort}
+    opt=JOptionPane.showOptionDialog(
+        None,
+        "Choose a sorting algorithm",
+        "Choosening",
+        JOptionPane.DEFAULT_OPTION,
+        JOptionPane.WARNING_MESSAGE,
+        None,
+        opts.keys(),
+        opts.keys()[0])
+    opts.values()[opt](shuffle(v))
     
     visualize()
 
