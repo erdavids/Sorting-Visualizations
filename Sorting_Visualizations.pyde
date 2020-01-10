@@ -87,35 +87,38 @@ def gnome_sort(v):
             
         stages.append(next_stage)
     
-            
-
-# Slightly Modified Counting Sort
-def counting_sort(v):
+#shoutout to https://www.geeksforgeeks.org/python-program-for-radix-sort/
+#for providing me (Riedler) with the template for counting and radix sort.
+def counting_sort(v,n):
+    l=len(v) 
+    out=[0]*l
+    count=[0]*10
     
-    count = [0] * (max(v) + 1)
+    for i in range(0,l):
+        count[(v[i]/n)%10]+=1
     
-    # Count occurrence of each value
-    for i in v:
-        count[i] += 1
-
-        
-    out = []
-    out_index = 0
+    for i in range(1,10): 
+        count[i] += count[i-1]
     
-    for i in range(len(count)):
-        for j in range(count[i]):
-            out.append(i)
+    i = l-1
+    while i>=0: 
+        index = (v[i]/n) 
+        out[ count[ (index)%10 ] - 1] = v[i] 
+        count[ (index)%10 ] -= 1
+        i -= 1
     
-    print(out)
+    i = 0
+    for i in range(0,l): 
+        v[i] = out[i] 
     
 def radix_sort(v):
-    m = max(v)
-    
-    exp = 1
-    while m/exp > 0:
-        print(counting_sort(v))
-        exp *= 10
-    
+    stages.append(v[:])
+    d = max(v)
+    n=1
+    while d/n>0:
+        counting_sort(v,n)
+        stages.append(v[:])
+        n*=10
 
 def merge_sort(v):
     
@@ -257,7 +260,7 @@ def setup():
     for e in range(element_count):
         v.append(e)
         
-    opts={"Bogosort":bogo_sort,"Gnome Sort":gnome_sort,"Bubble Sort":bubble_sort,"Merge Sort":merge_sort,"Insertion Sort":insertion_sort}
+    opts={"Bogosort":bogo_sort,"Gnome Sort":gnome_sort,"Bubble Sort":bubble_sort,"Merge Sort":merge_sort,"Insertion Sort":insertion_sort,"Radix":radix_sort}
     opt=JOptionPane.showOptionDialog(
         None,
         "Choose a sorting algorithm",
