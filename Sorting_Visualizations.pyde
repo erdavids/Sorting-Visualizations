@@ -2,7 +2,7 @@ import javax.swing.JOptionPane as JOptionPane
 
 w, h = 1050, 750
 
-element_count = 11
+element_count = 25
 stages = []
 
 # Colors for the gradient 
