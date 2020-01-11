@@ -36,7 +36,7 @@ All of these projects are available with the intention that other people will en
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/gnome.png"></p>
 
 ## Cycle Sort
-<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/cycles.png"></p>
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/cycle.png"></p>
 
 ## Heap Sort
 <p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/heap.png"></p>
