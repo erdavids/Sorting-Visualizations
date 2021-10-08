@@ -1,6 +1,12 @@
+import javax.swing.JOptionPane as JOptionPane
+import javax.swing.JPanel as JPanel
+import javax.swing.JToggleButton as JToggleButton
+import java.awt.GridLayout as GridLayout
+import javax.swing.JDialog as JDialog
+
 w, h = 1050, 750
 
-element_count = 11
+element_count = 25
 stages = []
 
 # Colors for the gradient 
@@ -85,36 +91,39 @@ def gnome_sort(v):
             
         stages.append(next_stage)
     
-            
-
-# Slightly Modified Counting Sort
-def counting_sort(v):
+#shoutout to https://www.geeksforgeeks.org/python-program-for-radix-sort/
+#for providing me (Riedler) with the template for counting and radix sort.
+def counting_sort(v,n):
+    l=len(v) 
+    out=[0]*l
+    count=[0]*10
     
-    count = [0] * (max(v) + 1)
+    for i in range(0,l):
+        count[(v[i]/n)%10]+=1
     
-    # Count occurrence of each value
-    for i in v:
-        count[i] += 1
-
-        
-    out = []
-    out_index = 0
+    for i in range(1,10): 
+        count[i] += count[i-1]
     
-    for i in range(len(count)):
-        for j in range(count[i]):
-            out.append(i)
+    i = l-1
+    while i>=0: 
+        index = (v[i]/n) 
+        out[ count[ (index)%10 ] - 1] = v[i] 
+        count[ (index)%10 ] -= 1
+        i -= 1
     
-    print(out)
+    i = 0
+    for i in range(0,l): 
+        v[i] = out[i] 
     
     
 def radix_sort(v):
-    m = max(v)
-    
-    exp = 1
-    while m/exp > 0:
-        print(counting_sort(v))
-        exp *= 10
-    
+    stages.append(v[:])
+    d = max(v)
+    n=1
+    while d/n>0:
+        counting_sort(v,n)
+        stages.append(v[:])
+        n*=10
 
 def merge_sort(v):
     
@@ -151,8 +160,10 @@ def merge_sort(v):
 
     stages.append(v[:])
 
-def quick_sort(v, low, high):
+def quick_sort(v, low=0, high=None):
     stages.append(v[:])
+    if high==None:
+        high=len(v)-1
     
     if (low < high):
         pivot = partition(v, low, high)
@@ -216,6 +227,35 @@ def bubble_sort(v):
             break
     return stages
 
+opts={"Bogosort":bogo_sort,
+    "Gnome Sort":gnome_sort,
+    "Bubble Sort":bubble_sort,
+    "Merge Sort":merge_sort,
+    "Insertion Sort":insertion_sort,
+    "Radix":radix_sort,
+    "Quicksort":quick_sort}
+
+jp=JOptionPane()
+dialog=jp.createDialog(None,"Choose an algorithm")
+jp.remove(0)
+jp.remove(0)
+dialog.setLayout(GridLayout(5,5))
+btns=[]
+opt=None
+def btnActionListener(e):
+    global opt,btns,dialog
+    btn=e.getSource()
+    if btn.isSelected():
+        opt=btns.index(btn)
+        dialog.setVisible(False)
+    
+for txt in opts.keys():
+    btn=JToggleButton(txt)
+    btn.addActionListener(btnActionListener)
+    dialog.add(btn)
+    btns.append(btn)
+dialog.setVisible(True)
+
 def visualize():
     for i in range(element_count):
         colors.append((i * 255/element_count, 20, 60))
@@ -251,16 +291,16 @@ def setup():
     pixelDensity(2)
     background(colors[2][0], colors[2][1], colors[2][2])
     strokeWeight(stroke_weight)
-
-    v = []
-    for e in range(element_count):
-        v.append(e)
-        
-        
-    gnome_sort(shuffle(v))
     
-    visualize()
-
+    if opt!=None:
+        v = []
+        for e in range(element_count):
+            v.append(e)
+            
+        opts.values()[opt](shuffle(v))
+        
+        visualize()
     
-    save_seed = str(int(random(10000)))
-    save('Examples/Gnome/%s.png' % save_seed)
+        
+        save_seed = str(int(random(10000)))
+        save('Examples/%s/%s.png'%(opts.keys()[opt],save_seed))

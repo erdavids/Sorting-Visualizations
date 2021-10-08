@@ -33,3 +33,20 @@ All of these projects are available with the intention that other people will en
 ## Gnome Sort
 <p align="center"><img src="https://github.com/erdavids/Sorting-Visualizations/blob/master/Examples/Favorites/gnome.png"></p>
 
+## Cycle Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/cycle.png"></p>
+
+## Heap Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/heap.png"></p>
+
+## Shell Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/shell.png"></p>
+
+## Radix Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/radix.png"></p>
+
+## Strand Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/strand.png"></p>
+
+## Cocktail Shaker Sort
+<p align="center"><img src="https://github.com/RiedleroD/Sorting-Visualizations/blob/master/Examples/Favorites/cocktail shaker.png"></p>
